@@ -21,5 +21,6 @@ public class MainFunctionalInterface {
         };
         Add a1=(int n1,int n2)->(n1+n2);
         System.out.println(a1.calculate(20,30));
+        System.out.println();
     }
 }
