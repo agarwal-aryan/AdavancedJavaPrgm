@@ -7,6 +7,6 @@ public class ForEachMethod {
     public static void main(String[] args) {
         int [] data={1,2,3,4,5,6,8,9};
 //        array does not have any ForEach method
-//        ArrayList<Integer> list= Arrays.asList(data);
+        ArrayList<Integer> list= new ArrayList<>(Arrays.asList(data));
     }
 }
