@@ -7,6 +7,18 @@ interface Add {
     boolean vote(int age);
 //    void calculate(int n1,int n2,int n3);
 }
+@FunctionalInterface
+interface Operation {
+    int calculate(int a, int b);
+}
+ class Test {
+    public static void main(String[] args) {
+        Operation add = (a, b) -> a + b;
+        System.out.println(add.calculate(6, 3));
+        Operation sub = (a,b)-> a-b;
+        System.out.println(sub.calculate(6,3));
+    }
+}
 
 public class MainFunctionalInterface {
     public static void main(String[] args) {
