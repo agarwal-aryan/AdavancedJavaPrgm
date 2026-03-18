@@ -43,4 +43,29 @@ public class FilterApiExamples {
 //        list3.stream().filter(n->n%2!=0).forEach(item-> System.out.println(item));
 
     }
+
 }
+
+class Student {
+    String name;
+    int marks;
+
+    Student(String name, int marks) {
+        this.marks = marks;
+        this.name = name;
+    }
+}
+//how to filter a list of different class objects
+class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student("s1", 89);
+        Student s2 = new Student("s2", 78);
+        Student s3 = new Student("s3", 77);
+        Student s4 = new Student("s4", 56);
+        ArrayList<Student> list3 = new ArrayList<>();
+        list3.addAll(List.of(s1, s2, s3, s4));
+
+        list3.stream().filter(n -> n.marks > 60).forEach(item -> System.out.println(item.name));
+    }
+}
+
