@@ -1,7 +1,10 @@
 package com.StreamAPI;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class FilterApiExamples {
     public static void main(String[] args) {
@@ -29,11 +32,11 @@ public class FilterApiExamples {
 
 //      question5
 
-        ArrayList<String> listString3 = new ArrayList<>();
-        listString3.addAll(List.of("Java", "null", "Spring", "null", "React"));
-
-        List<String> str = listString3.stream().filter(n -> !n.equals("null")).toList();
-        System.out.println(str);
+//        ArrayList<String> listString3 = new ArrayList<>();
+//        listString3.addAll(List.of("Java", "null", "Spring", "null", "React"));
+//
+//        List<String> str = listString3.stream().filter(n -> !n.equals("null")).toList();
+//        System.out.println(str);
 
 
 //        question6
@@ -41,6 +44,8 @@ public class FilterApiExamples {
 //        list3.addAll(List.of(3,4,7,8,9,1,5,4,16));
 
 //        list3.stream().filter(n->n%2!=0).forEach(item-> System.out.println(item));
+
+
 
     }
 
@@ -62,10 +67,13 @@ class Main {
         Student s2 = new Student("s2", 78);
         Student s3 = new Student("s3", 77);
         Student s4 = new Student("s4", 56);
+        Student s5 = new Student("s5", 57);
         ArrayList<Student> list3 = new ArrayList<>();
         list3.addAll(List.of(s1, s2, s3, s4));
 
         list3.stream().filter(n -> n.marks > 60).forEach(item -> System.out.println(item.name));
+        list3.add(s5);
+
     }
 }
 
