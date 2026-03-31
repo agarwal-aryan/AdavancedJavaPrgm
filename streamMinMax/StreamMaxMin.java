@@ -1,7 +1,53 @@
 package com.streamMinMax;
 
 import java.util.*;
-import java.util.stream.Stream;
+
+class Employee {
+    int id;
+    String name;
+    double salary;
+    int age;
+    String department;
+
+    public Employee(int id, String name, double salary, int age, String department) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+        this.age = age;
+        this.department = department;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", salary=" + salary +
+                ", age=" + age +
+                ", department='" + department + '\'' +
+                '}';
+    }
+}
 
 public class StreamMaxMin {
     public static void main(String[] args) {
@@ -33,42 +79,41 @@ public class StreamMaxMin {
                 new Employee(108, "Amit", 50000, 25, "IT")
         ));
 
-        Optional<Employee> result34=empList.stream().min(Comparator.comparingInt(Employee::getAge));
-        result34.ifPresent(System.out::println);
+//        Optional<Employee> result34=empList.stream().min(Comparator.comparingInt(Employee::getAge));
+//        result34.ifPresent(System.out::println);
 
+        Employee secondHighestSalary = empList.stream().sorted(Comparator.comparing(Employee::getSalary)
+                        .reversed())
+                .skip(1)
+                .findFirst().get();
+//        System.out.println(secondHighestSalary);
+
+//        List<Employee> employees =empList.stream().sorted(Comparator.comparing(Employee::getSalary)
+//                        .reversed())
+//                .limit(3).toList();
+//        employees.forEach(System.out::println);
+
+
+        Employee e4 = empList.stream().filter((e) -> e.getDepartment().equals("IT"))
+                .min(Comparator.comparing(Employee::getSalary)).get();
+//        System.out.println(e4);
+
+
+        Employee e5 = empList.stream().filter((e) -> e.getAge()>25)
+                .min(Comparator.comparing(Employee::getSalary)).get();
+//        System.out.println(e5);
+
+        Employee e6 = empList.stream().filter((e) -> e.getAge()<30)
+                .max(Comparator.comparing(Employee::getSalary)).get();
+//        System.out.println(e6);
+
+
+        empList.stream().skip(3).limit(2).forEach(System.out::println);
+
+
+
+        List<Integer> l1=Arrays.asList(2,4,3,5,1,6);
+        List<Integer>list2=l1.stream().sorted((a,b)->-a+b).limit(3).toList();
     }
 }
 
-class Employee {
-    int id;
-    String name;
-    double salary;
-    int age;
-    String department;
-
-    public Employee(int id, String name, double salary, int age, String department) {
-        this.id = id;
-        this.name = name;
-        this.salary = salary;
-        this.age = age;
-        this.department = department;
-    }
-
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public double getSalary() { return salary; }
-    public int getAge() { return age; }
-    public String getDepartment() { return department; }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", salary=" + salary +
-                ", age=" + age +
-                ", department='" + department + '\'' +
-                '}';
-    }
-}
-//Sample ArrayList (used in questions)
